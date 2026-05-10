@@ -1,207 +1,193 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aikoさん 動作評価フィードバック</title>
 
-export default function AikoAssessmentPage() {
-  const mobilityList = [
-    {
-      title: "ストレッチポール体側リリース",
-      purpose: "胸郭・体側の可動性改善",
-      point: "呼吸を止めずにリラックス",
-      ng: "力を入れすぎる",
-      url: "https://drive.google.com/file/d/1BJTV7pINmh6lJ1gVK0GPjaa7a23ixepp/view?usp=sharing",
-    },
-    {
-      title: "ストレッチポール前方リーチ",
-      purpose: "肩甲帯・胸郭の可動性改善",
-      point: "肩をすくめない",
-      ng: "腰を反りすぎる",
-      url: "https://drive.google.com/file/d/1kdsdlW3bKNxSM_2t0QyqeJOuR1zLj58g/view?usp=sharing",
-    },
-    {
-      title: "ストレッチポール回旋リーチ",
-      purpose: "胸椎回旋の改善",
-      point: "骨盤を固定する",
-      ng: "勢いで回す",
-      url: "https://drive.google.com/file/d/1kdsdlW3bKNxSM_2t0QyqeJOuR1zLj58g/view?usp=sharing",
-    },
-    {
-      title: "グッドモーニング（ノーマル・ワイド・シングル）",
-      purpose: "股関節ヒンジ動作獲得",
-      point: "お尻を後ろへ引く",
-      ng: "背中を丸める",
-      url: "https://drive.google.com/file/d/1jU9t9eAVzwaQ65jZdgOqcE4279H35Kgl/view?usp=sharing",
-    },
-    {
-      title: "スプリットスタンスストレッチ（ヨガブロック）",
-      purpose: "股関節前面の柔軟性改善",
-      point: "骨盤を正面へ向ける",
-      ng: "腰を反りすぎる",
-      url: "https://drive.google.com/file/d/1y-LuJoCi2kuFtxKRvbDWSlKMhlu4hWBk/view?usp=sharing",
-    },
-    {
-      title: "ペルビックアップダウン",
-      purpose: "骨盤コントロール改善",
-      point: "骨盤を丁寧に動かす",
-      ng: "勢いで動かす",
-      url: "https://drive.google.com/file/d/15co7a7MZ-qz0VN4GjW5FufPCrPpl3l-z/view?usp=sharing",
-    },
-    {
-      title: "サイドベント",
-      purpose: "側屈・体幹コントロール改善",
-      point: "身体を真横へ倒す",
-      ng: "身体が前に倒れる",
-      url: "https://drive.google.com/file/d/1SIlchCgRTqFNy6-GYQAzlZlMhjssDfYt/view?usp=sharing",
-    },
-    {
-      title: "ペルビックサークル",
-      purpose: "骨盤・股関節連動改善",
-      point: "円を描くように動かす",
-      ng: "上半身が大きく動く",
-      url: "https://drive.google.com/file/d/16MpdVXqgT0XmEDA6lz3Vw8Wr5edYk-sz/view?usp=sharing",
-    },
-  ];
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: #fafafa;
+      color: #2d2d2d;
+      line-height: 1.7;
+      padding: 16px;
+    }
 
-  return (
-    <div className="min-h-screen bg-[#FAFAFA] p-4 text-[#2D2D2D]">
-      <div className="max-w-3xl mx-auto space-y-6">
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#EFD8E0]">
-          <div className="inline-block bg-[#B6A3D2] text-white text-sm px-3 py-1 rounded-full mb-4">
-            Assessment Report
-          </div>
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid #efd8e0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
 
-          <h1 className="text-3xl font-bold mb-3">
-            aikoさん 動作評価フィードバック
-          </h1>
+    .badge {
+      display: inline-block;
+      background: #b6a3d2;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
 
-          <p className="text-gray-600 leading-relaxed">
-            動作評価結果とモビリティトレーニング一覧です。
-          </p>
-        </div>
+    h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#EFD8E0] space-y-5">
-          <h2 className="text-2xl font-bold">📝 総合評価</h2>
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
 
-          <div className="space-y-5 leading-relaxed text-gray-700 text-sm md:text-base">
+    .sub-card {
+      background: #fafafa;
+      border-radius: 20px;
+      padding: 18px;
+      margin-top: 14px;
+    }
 
-            <div className="bg-[#FAFAFA] rounded-2xl p-5 border border-gray-100">
-              <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
-                Current Status
-              </p>
+    .violet { background: #f3eef8; }
+    .blue { background: #eef7ff; }
+    .pink { background: #fff0f4; }
+    .beige { background: #f7efe5; }
 
-              <p>
-                aikoさんは現在、
-                <span className="font-semibold text-[#2D2D2D]">
-                  「股関節・骨盤をうまく使えず、上半身で代償しながら動いている状態」
-                </span>
-                が見られます。
-              </p>
-            </div>
+    .exercise {
+      background: #fafafa;
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
 
-            <div className="grid gap-3">
-              <div className="bg-violet-50 rounded-2xl p-4">
-                <p className="font-semibold mb-1">✔ 股関節の動き</p>
-                <p className="text-sm text-gray-600">
-                  深くしゃがむ・前屈する際に股関節を十分に使いにくい状態
-                </p>
-              </div>
+    .video-btn {
+      display: block;
+      text-align: center;
+      background: #b6a3d2;
+      color: white;
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 18px;
+      margin-top: 16px;
+      font-weight: bold;
+    }
 
-              <div className="bg-sky-50 rounded-2xl p-4">
-                <p className="font-semibold mb-1">✔ 骨盤コントロール</p>
-                <p className="text-sm text-gray-600">
-                  骨盤の前傾・側方移動が苦手で、腰や上半身で代償しやすい状態
-                </p>
-              </div>
+    .label {
+      font-size: 12px;
+      color: #888;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
 
-              <div className="bg-pink-50 rounded-2xl p-4">
-                <p className="font-semibold mb-1">✔ 肩・胸郭の可動性</p>
-                <p className="text-sm text-gray-600">
-                  バンザイ動作で肩や胸郭の動きに制限が見られる状態
-                </p>
-              </div>
-            </div>
+    p {
+      margin: 0;
+    }
 
-            <div className="bg-[#F7EFE5] rounded-2xl p-5 border border-[#EFD8E0]">
-              <p className="font-semibold mb-2">🎯 今後の改善テーマ</p>
+    .space {
+      height: 12px;
+    }
+  </style>
+</head>
 
-              <div className="space-y-2">
-                <p>① 股関節から動く（ヒンジ動作）</p>
-                <p>② 骨盤コントロール改善</p>
-                <p>③ 胸郭・肩周囲の柔軟性向上</p>
-              </div>
-            </div>
+<body>
+  <div class="container">
 
-            <div className="bg-[#FAFAFA] rounded-2xl p-5 border border-gray-100">
-              <p>
-                現在は「筋力不足」というより、
-                <span className="font-semibold">
-                  “正しく動くための可動性と連動性”
-                </span>
-                を整えていく段階です。
-              </p>
+    <div class="card">
+      <div class="badge">Assessment Report</div>
 
-              <p className="mt-3">
-                今後は身体の土台づくりを行いながら、
-                スクワット・姿勢・片脚バランスなどの改善を目指していきます。
-              </p>
-            </div>
+      <h1>aikoさん 動作評価フィードバック</h1>
 
-          </div>
-        </div>
+      <p>
+        動作評価結果とモビリティトレーニング一覧です。
+      </p>
+    </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#EFD8E0]">
-          <h2 className="text-2xl font-bold mb-5">
-            🎥 モビリティトレーニング一覧
-          </h2>
+    <div class="card">
+      <h2>📝 総合評価</h2>
 
-          <div className="space-y-4">
-            {mobilityList.map((item, index) => (
-              <div
-                key={index}
-                className="bg-[#FAFAFA] rounded-3xl p-5 border border-gray-100"
-              >
-                <div className="mb-4 space-y-4">
-                  <h3 className="font-bold text-lg leading-snug">
-                    {item.title}
-                  </h3>
+      <div class="sub-card">
+        <div class="label">Current Status</div>
 
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-full bg-[#B6A3D2] text-white py-3 rounded-2xl font-semibold hover:opacity-90 transition"
-                  >
-                    Google Driveで開く
-                  </a>
-                </div>
+        <p>
+          aikoさんは現在、
+          <strong>
+            「股関節・骨盤をうまく使えず、上半身で代償しながら動いている状態」
+          </strong>
+          が見られます。
+        </p>
+      </div>
 
-                <div className="space-y-3 text-sm leading-relaxed">
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-gray-400 mb-1">
-                      Purpose
-                    </p>
-                    <p>🎯 {item.purpose}</p>
-                  </div>
+      <div class="sub-card violet">
+        <strong>✔ 股関節の動き</strong>
+        <div class="space"></div>
+        <p>深くしゃがむ・前屈する際に股関節を十分に使いにくい状態</p>
+      </div>
 
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-gray-400 mb-1">
-                      Point
-                    </p>
-                    <p>✅ {item.point}</p>
-                  </div>
+      <div class="sub-card blue">
+        <strong>✔ 骨盤コントロール</strong>
+        <div class="space"></div>
+        <p>骨盤の前傾・側方移動が苦手で、腰や上半身で代償しやすい状態</p>
+      </div>
 
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-gray-400 mb-1">
-                      NG
-                    </p>
-                    <p>⚠️ {item.ng}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div class="sub-card pink">
+        <strong>✔ 肩・胸郭の可動性</strong>
+        <div class="space"></div>
+        <p>バンザイ動作で肩や胸郭の動きに制限が見られる状態</p>
+      </div>
 
+      <div class="sub-card beige">
+        <strong>🎯 今後の改善テーマ</strong>
+
+        <div class="space"></div>
+
+        <p>① 股関節から動く（ヒンジ動作）</p>
+        <p>② 骨盤コントロール改善</p>
+        <p>③ 胸郭・肩周囲の柔軟性向上</p>
       </div>
     </div>
-  );
-}
+
+    <div class="card">
+      <h2>🎥 モビリティトレーニング一覧</h2>
+
+      <div class="exercise">
+        <strong>ストレッチポール体側リリース</strong>
+        <div class="space"></div>
+        <p>🎯 胸郭・体側の可動性改善</p>
+        <div class="space"></div>
+        <p>✅ 呼吸を止めずにリラックス</p>
+        <div class="space"></div>
+        <p>⚠️ 力を入れすぎる</p>
+
+        <a class="video-btn" href="https://drive.google.com/file/d/1BJTV7pINmh6lJ1gVK0GPjaa7a23ixepp/view?usp=sharing" target="_blank">
+          ▶ 動画を見る
+        </a>
+      </div>
+
+      <div class="exercise">
+        <strong>ストレッチポール前方リーチ</strong>
+        <div class="space"></div>
+        <p>🎯 肩甲帯・胸郭の可動性改善</p>
+        <div class="space"></div>
+        <p>✅ 肩をすくめない</p>
+        <div class="space"></div>
+        <p>⚠️ 腰を反りすぎる</p>
+
+        <a class="video-btn" href="https://drive.google.com/file/d/1kdsdlW3bKNxSM_2t0QyqeJOuR1zLj58g/view?usp=sharing" target="_blank">
+          ▶ 動画を見る
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>
